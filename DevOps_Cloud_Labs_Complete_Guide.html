@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevOps &amp; Cloud Labs — Complete Learning Roadmap</title>
+<style>
+:root{
+  --bg:#f0f4f8;
+  --card:#ffffff;
+  --border:#d8e2ed;
+  --text:#1a2733;
+  --muted:#5a6a7a;
+  --accent:#e85d04;
+  --header-bg:#0d2137;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;}
+
+/* ── HEADER ── */
+.site-header{
+  background:linear-gradient(135deg,#0d2137 0%,#1a3a5c 60%,#0d3060 100%);
+  color:#fff;padding:48px 32px 40px;text-align:center;
+  border-bottom:4px solid var(--accent);
+}
+.site-header h1{font-size:2.4rem;font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.site-header h1 span{color:#f0a040;}
+.site-header .subtitle{font-size:1.05rem;opacity:.88;max-width:720px;margin:0 auto 24px;}
+.stat-pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px;}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);
+  border-radius:24px;padding:8px 20px;font-size:.9rem;font-weight:600;}
+.pill span{color:#f0a040;font-size:1.1rem;}
+
+/* ── SEARCH BAR ── */
+.search-bar{
+  background:#fff;padding:16px 32px;
+  border-bottom:2px solid var(--border);
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.search-bar input{
+  flex:1;min-width:220px;padding:10px 16px;border:2px solid var(--border);
+  border-radius:8px;font-size:.95rem;outline:none;transition:border .2s;
+}
+.search-bar input:focus{border-color:#0078d4;}
+.search-bar label{font-size:.85rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+#result-count{font-size:.85rem;color:var(--muted);white-space:nowrap;}
+
+/* ── NAV ── */
+nav.stage-nav{
+  background:#fff;padding:14px 32px;
+  border-bottom:1px solid var(--border);
+  display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;
+}
+.nav-label{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-right:4px;}
+nav.stage-nav a{
+  text-decoration:none;font-size:.83rem;font-weight:600;padding:4px 12px;
+  border-radius:20px;transition:all .15s;border:2px solid transparent;
+}
+nav.stage-nav a:hover{opacity:.85;border-color:currentColor;}
+
+/* ── MAIN ── */
+main{max-width:1260px;margin:0 auto;padding:32px 20px 80px;}
+
+
+/* ── STAGE ── */
+.stage{margin-bottom:56px;}
+.stage-header{
+  display:flex;align-items:center;gap:14px;padding:20px 24px;
+  border-radius:12px 12px 0 0;color:#fff;position:relative;
+}
+.stage-icon{font-size:1.8rem;line-height:1;}
+.stage-label{font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+.stage-title{font-size:1.4rem;font-weight:800;margin-top:2px;}
+.stage-meta{margin-left:auto;text-align:right;font-size:.82rem;opacity:.85;}
+.stage-meta strong{font-size:1.05rem;display:block;}
+.stage-description{
+  padding:16px 24px;
+  font-size:.93rem;color:var(--text);
+  border-left:4px solid;border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:#fff;
+}
+
+/* ── SECTION ── */
+.section{margin-top:0;}
+.section-header{
+  padding:12px 24px;background:#f7f9fc;border:1px solid var(--border);
+  border-top:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.section-title{font-size:1rem;font-weight:700;flex:1;}
+.section-note{font-size:.82rem;color:var(--muted);font-style:italic;}
+.section-hours{font-size:.82rem;font-weight:600;background:var(--border);padding:2px 10px;border-radius:12px;color:var(--muted);}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-top:none;}
+table{width:100%;border-collapse:collapse;font-size:.88rem;}
+thead th{
+  padding:10px 14px;font-size:.78rem;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;color:#fff;text-align:left;
+}
+thead th:first-child{text-align:center;width:44px;}
+thead th.th-dur{width:70px;text-align:center;}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s;}
+tbody tr:hover{background:#f0f4f8 !important;}
+tbody tr.even{background:#f8fafc;}
+tbody tr.odd{background:#ffffff;}
+tbody tr.hidden{display:none;}
+td{padding:10px 14px;vertical-align:top;}
+td.td-num{text-align:center;font-weight:700;color:var(--muted);font-size:.82rem;width:44px;}
+td.td-title{min-width:260px;max-width:340px;}
+td.td-title a{
+  color:#0062cc;text-decoration:none;font-weight:600;line-height:1.4;
+  display:block;
+}
+td.td-title a:hover{text-decoration:underline;color:#004499;}
+td.td-dur{text-align:center;color:var(--muted);font-size:.8rem;width:70px;white-space:nowrap;}
+td.td-covers{color:#2c3e50;font-size:.85rem;line-height:1.55;}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:32px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);}
+footer a{color:#0078d4;text-decoration:none;}
+
+/* ── MISC ── */
+.hidden-by-search{display:none!important;}
+.no-results{padding:20px 24px;color:var(--muted);font-style:italic;}
+
+@media(max-width:700px){
+  .site-header h1{font-size:1.6rem;}
+  main{padding:16px 10px 60px;}
+  td.td-covers{font-size:.8rem;}
+  .stage-header{flex-wrap:wrap;}
+  .stage-meta{margin-left:0;text-align:left;}
+}
+
+/* ── PDF STUDY MATERIALS BAR ── */
+.pdf-bar{
+  background:#fff;border-bottom:2px solid #d8e2ed;
+  padding:12px 32px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.pdf-bar-title{font-size:.85rem;font-weight:700;color:#1a2733;
+  text-transform:uppercase;letter-spacing:.5px;}
+.pdf-overall{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#e85d04;color:#fff;font-weight:700;font-size:.83rem;
+  padding:6px 16px;border-radius:20px;text-decoration:none;
+  transition:background .15s;
+}
+.pdf-overall:hover{background:#c44d00;}
+.pdf-link{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#f0f4f8;color:#0062cc;font-weight:700;font-size:.78rem;
+  padding:3px 11px;border-radius:14px;text-decoration:none;
+  border:1px solid #c8d8ec;white-space:nowrap;
+  transition:background .15s;
+}
+.pdf-link:hover{background:#dde8f5;}
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <h1>DevOps &amp; Cloud Labs <span>Complete Learning Roadmap</span></h1>
+  <p class="subtitle">
+    Every teaching session analysed · organised from beginner to advanced ·
+    doubt &amp; Q&amp;A sessions removed · video links, durations and topic breakdowns included
+  </p>
+  <div class="stat-pills">
+    <div class="pill"><span>142</span> Teaching Sessions</div>
+    <div class="pill"><span>293h</span> Total Content</div>
+    <div class="pill"><span>7</span> Learning Stages</div>
+    <div class="pill"><span>5</span> Real-World Projects</div>
+    <div class="pill"><span>Updated</span> May 2026</div>
+  </div>
+</header>
+
+
+<div class="search-bar">
+  <label for="search">🔍 Search sessions:</label>
+  <input type="text" id="search" placeholder="Type a topic (e.g. EKS, Terraform, Jenkins, Docker...)"/>
+  <span id="result-count"></span>
+</div>
+
+<nav class="stage-nav">
+<span class="nav-label">Jump to:</span>
+<a href="#stage1" style="color:#00467f;background:#e8f0fa">STAGE 1: DevOps Foundations — Start Here</a>
+<a href="#stage2a" style="color:#c85000;background:#fdf0e8">STAGE 2A: AWS Cloud — Core Services</a>
+<a href="#stage2b" style="color:#0078d4;background:#e5f1fb">STAGE 2B: Azure Cloud — Core Services</a>
+<a href="#stage3" style="color:#5800a0;background:#f3eafd">STAGE 3: DevOps Tools — Specialist Bootcamps</a>
+<a href="#stage4" style="color:#b00000;background:#fce8e8">STAGE 4: Advanced AWS — Enterprise Architecture</a>
+<a href="#stage5" style="color:#007800;background:#e8f5e9">STAGE 5: Real-World Projects — Build Your Portfolio</a>
+<a href="#stage6" style="color:#005aa0;background:#e5f1fb">STAGE 6: AI for DevOps & Cloud</a>
+<a href="#stage7" style="color:#785000;background:#fdf5e8">STAGE 7: Career Preparation — Get Hired</a>
+</nav>
+<main>
+
+<div class="pdf-bar">
+  <span class="pdf-bar-title">📄 Study Materials &amp; PDFs:</span>
+  <a class="pdf-overall" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">
+    📄 All PDFs &amp; Study Materials
+  </a>
+  <span style="font-size:.8rem;color:#5a6a7a;">
+    DevOps · Docker · K8s · Terraform · AWS · Azure · AI — cheat sheets, architecture diagrams &amp; guides on LinkedIn
+  </span>
+</div>
+
+<div class="stage" id="stage1">
+<div class="stage-header" style="background:#00467f">
+  <div class="stage-icon">🚀</div>
+  <div>
+    <div class="stage-label">STAGE 1</div>
+    <div class="stage-title">DevOps Foundations — Start Here</div>
+  </div>
+  <div class="stage-meta">
+    <strong>21 sessions</strong>
+    59.9h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#00467f">
+  If you are completely new to DevOps and Cloud, begin with Stage 1. These sessions introduce every core tool and concept you need: Linux, Git, Jenkins, Artifactory, Docker, Kubernetes, Terraform, AWS basics and monitoring. Bootcamp #1 (Track A) and Batch 5 (Track B) cover the same foundational curriculum — choose ONE track to start.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#00467f">Track A — DevOps & Cloud Bootcamp #1 (Recommended First Path)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 DevOps Bootcamp PDFs</a>
+  </div>
+    <span class="section-hours">36.3h</span>
+    <div class="section-note">12 sessions · The primary beginners bootcamp. Covers the complete DevOps stack end-to-end with hands-on AWS labs.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#00467f">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="bootcamp # 1  | session # 1 | introduction devops introduction · what is devops · ci/cd concept · toolchain overview (git/jenkins/docker/k8s/terraform/aws) · lab environment setup · career roadmap">
+      <td class="td-num">1</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=-kIJOSmdv2Q" target="_blank" rel="noopener">Bootcamp # 1  | Session # 1 | Introduction</a></td>
+      <td class="td-dur">3h 11m</td>
+      <td class="td-covers">DevOps introduction · What is DevOps · CI/CD concept · Toolchain overview (Git/Jenkins/Docker/K8s/Terraform/AWS) · Lab environment setup · Career roadmap</td>
+    </tr>
+    <tr class="odd" data-search="bootcamp # 1  | session # 2 | linux | git linux essentials · file system navigation · permissions · package management · text processing (grep/awk/sed) · git: repos, commits, branches, collaboration">
+      <td class="td-num">2</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=biA7rTfkO9Q" target="_blank" rel="noopener">Bootcamp # 1  | Session # 2 | Linux | Git</a></td>
+      <td class="td-dur">4h 01m</td>
+      <td class="td-covers">Linux essentials · File system navigation · Permissions · Package management · Text processing (grep/awk/sed) · Git: repos, commits, branches, collaboration</td>
+    </tr>
+    <tr class="even" data-search="bootcamp # 1 | session # 3 | jenkins | artifactory jenkins ci/cd · installation · job types · jenkinsfile (declarative pipeline) · stages · jfrog artifactory integration · artifact publishing and retrieval">
+      <td class="td-num">3</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=4OVD5YvwEIk" target="_blank" rel="noopener">Bootcamp # 1 | Session # 3 | Jenkins | Artifactory</a></td>
+      <td class="td-dur">3h 45m</td>
+      <td class="td-covers">Jenkins CI/CD · Installation · Job types · Jenkinsfile (declarative pipeline) · Stages · JFrog Artifactory integration · Artifact publishing and retrieval</td>
+    </tr>
+    <tr class="odd" data-search="bootcamp # 1 | session # 4 | aws networking | vpc aws networking · vpc creation · public/private subnets · internet gateway · nat gateway · route tables · security groups · nacls · vpc architecture design">
+      <td class="td-num">4</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=2EZI474YLkg" target="_blank" rel="noopener">Bootcamp # 1 | Session # 4 | AWS Networking | VPC</a></td>
+      <td class="td-dur">3h 18m</td>
+      <td class="td-covers">AWS Networking · VPC creation · Public/private subnets · Internet Gateway · NAT Gateway · Route tables · Security Groups · NACLs · VPC architecture design</td>
+    </tr>
+    <tr class="even" data-search="bootcamp # 1 | session # 5 | ec2 | ebs | sg aws compute · ec2 instance launch · ebs volume attachment · security group rules · ssh access · instance types · amis · elastic ip · auto-scaling concepts">
+      <td class="td-num">5</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=HhM9uOY21Ak" target="_blank" rel="noopener">Bootcamp # 1 | Session # 5 | EC2 | EBS | SG</a></td>
+      <td class="td-dur">3h 13m</td>
+      <td class="td-covers">AWS Compute · EC2 instance launch · EBS volume attachment · Security Group rules · SSH access · Instance types · AMIs · Elastic IP · Auto-scaling concepts</td>
+    </tr>
+    <tr class="odd" data-search="bootcamp #1 | session # 6 | s3 | iam | rds aws core services · s3 bucket operations (versioning/policies) · iam users/roles/policies · rds mysql setup with multi-az · connecting application to rds">
+      <td class="td-num">6</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Roq9Ywwt6HQ" target="_blank" rel="noopener">Bootcamp #1 | Session # 6 | S3 | IAM | RDS</a></td>
+      <td class="td-dur">3h 52m</td>
+      <td class="td-covers">AWS Core Services · S3 bucket operations (versioning/policies) · IAM users/roles/policies · RDS MySQL setup with Multi-AZ · Connecting application to RDS</td>
+    </tr>
+    <tr class="even" data-search="bootcamp # 1 | session # 7 | terraform terraform iac · provider setup · resource blocks for aws vpc/ec2/s3 · variables and outputs · state management · apply and destroy workflow">
+      <td class="td-num">7</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=xI1gjpOFgaA" target="_blank" rel="noopener">Bootcamp # 1 | Session # 7 | Terraform</a></td>
+      <td class="td-dur">3h 40m</td>
+      <td class="td-covers">Terraform IaC · Provider setup · Resource blocks for AWS VPC/EC2/S3 · Variables and outputs · State management · Apply and destroy workflow</td>
+    </tr>
+    <tr class="odd" data-search="bootcamp # 1 | session # 8 | docker docker · installation · image concepts · dockerfile creation (multi-stage) · container networking · docker volumes · pushing to docker hub/ecr">
+      <td class="td-num">8</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=uvgce8piriM" target="_blank" rel="noopener">Bootcamp # 1 | Session # 8 | Docker</a></td>
+      <td class="td-dur">2h 10m</td>
+      <td class="td-covers">Docker · Installation · Image concepts · Dockerfile creation (multi-stage) · Container networking · Docker volumes · Pushing to Docker Hub/ECR</td>
+    </tr>
+    <tr class="even" data-search="bootcamp # 1 | session # 9 | kubernetes-part1 kubernetes part 1 · architecture (control plane/worker nodes) · pod creation · deployment manifests · kubectl commands · service types (clusterip/nodeport)">
+      <td class="td-num">9</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Xjy3Re54Xqw" target="_blank" rel="noopener">Bootcamp # 1 | Session # 9 | Kubernetes-part1</a></td>
+      <td class="td-dur">1h 53m</td>
+      <td class="td-covers">Kubernetes part 1 · Architecture (control plane/worker nodes) · Pod creation · Deployment manifests · kubectl commands · Service types (ClusterIP/NodePort)</td>
+    </tr>
+    <tr class="odd" data-search="bootcamp # 1 | session # 10 | kubernetes-part2 kubernetes part 2 · services (loadbalancer) · configmaps · secrets · persistent volumes · namespaces · rolling updates · deployment strategy">
+      <td class="td-num">10</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ZBNFW6gATC8" target="_blank" rel="noopener">Bootcamp # 1 | Session # 10 | Kubernetes-part2</a></td>
+      <td class="td-dur">2h 22m</td>
+      <td class="td-covers">Kubernetes part 2 · Services (LoadBalancer) · ConfigMaps · Secrets · Persistent Volumes · Namespaces · Rolling Updates · Deployment strategy</td>
+    </tr>
+    <tr class="even" data-search="bootcamp # 1 | session # 11 | monitoring | alerting | lambda monitoring &amp; alerting · cloudwatch metrics/alarms/dashboards · prometheus + grafana setup · alertmanager · sns notifications · lambda for auto-remediation">
+      <td class="td-num">11</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=8zLi_FQx2p4" target="_blank" rel="noopener">Bootcamp # 1 | Session # 11 | Monitoring | Alerting | Lambda</a></td>
+      <td class="td-dur">3h 18m</td>
+      <td class="td-covers">Monitoring &amp; Alerting · CloudWatch metrics/alarms/dashboards · Prometheus + Grafana setup · AlertManager · SNS notifications · Lambda for auto-remediation</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud bootcamp final project demo final project demo · ci/cd pipeline from code commit to production · terraform provisioned infrastructure · containerised app on eks · cloudwatch monitoring · lessons learned">
+      <td class="td-num">12</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Bu58ivktpxM" target="_blank" rel="noopener">DevOps and Cloud Bootcamp Final Project Demo</a></td>
+      <td class="td-dur">1h 30m</td>
+      <td class="td-covers">Final project demo · CI/CD pipeline from code commit to production · Terraform provisioned infrastructure · Containerised app on EKS · CloudWatch monitoring · Lessons learned</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#00467f">Track B — Batch 5 Sessions (Alternative Beginner Path)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 DevOps Bootcamp PDFs</a>
+  </div>
+    <span class="section-hours">23.6h</span>
+    <div class="section-note">9 sessions + project demo · Covers the same foundations with additional SonarQube and Trivy security scanning lab.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#00467f">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="batch 5 | session 1 | devops introduction devops landscape · role of a devops engineer · toolchain walkthrough · cloud provider comparison (aws/azure/gcp) · career path planning · lab setup">
+      <td class="td-num">13</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=sFZ8IklNHeg" target="_blank" rel="noopener">Batch 5 | Session 1 | DevOps Introduction</a></td>
+      <td class="td-dur">2h 24m</td>
+      <td class="td-covers">DevOps landscape · Role of a DevOps engineer · Toolchain walkthrough · Cloud provider comparison (AWS/Azure/GCP) · Career path planning · Lab setup</td>
+    </tr>
+    <tr class="odd" data-search="batch 5 | session 2 | linux &amp; git linux and git · essential linux commands · shell scripting basics · git workflow (fork/clone/push/pr) · branching strategies · git hooks">
+      <td class="td-num">14</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=g700rRHgw_A" target="_blank" rel="noopener">Batch 5 | Session 2 | Linux &amp; Git</a></td>
+      <td class="td-dur">3h 20m</td>
+      <td class="td-covers">Linux and Git · Essential Linux commands · Shell scripting basics · Git workflow (fork/clone/push/PR) · Branching strategies · Git hooks</td>
+    </tr>
+    <tr class="even" data-search="batch 5 | session 3 | jenkins &amp; artifactory jenkins and artifactory · jenkins pipeline (declarative syntax) · multi-branch pipelines · artifactory repository types · build info · property sets">
+      <td class="td-num">15</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=FgzxRAvJ9_0" target="_blank" rel="noopener">Batch 5 | Session 3 | Jenkins &amp; Artifactory</a></td>
+      <td class="td-dur">3h 32m</td>
+      <td class="td-covers">Jenkins and Artifactory · Jenkins pipeline (declarative syntax) · Multi-branch pipelines · Artifactory repository types · Build info · Property sets</td>
+    </tr>
+    <tr class="odd" data-search="batch 5 | session 4 | docker docker · container vs vm · dockerfile best practices · image layering · docker compose for multi-service apps · container security basics">
+      <td class="td-num">16</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=FqdAE1L9KeU" target="_blank" rel="noopener">Batch 5 | Session 4 | Docker</a></td>
+      <td class="td-dur">3h 10m</td>
+      <td class="td-covers">Docker · Container vs VM · Dockerfile best practices · Image layering · Docker Compose for multi-service apps · Container security basics</td>
+    </tr>
+    <tr class="even" data-search="batch 5 | session 5 | kubernetes-part-1 kubernetes part 1 · cluster components · namespace design · pod scheduling · deployments · replicasets · services · resource requests and limits">
+      <td class="td-num">17</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=TcaNwkqQEX8" target="_blank" rel="noopener">Batch 5 | Session 5 | Kubernetes-part-1</a></td>
+      <td class="td-dur">2h 40m</td>
+      <td class="td-covers">Kubernetes part 1 · Cluster components · Namespace design · Pod scheduling · Deployments · ReplicaSets · Services · Resource requests and limits</td>
+    </tr>
+    <tr class="odd" data-search="batch 5 | session 6 | kubernetes part 2 kubernetes part 2 · statefulsets · daemonsets · ingress controllers (nginx) · cert-manager for tls · kubernetes rbac · horizontal pod autoscaler">
+      <td class="td-num">18</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=u5DBhjwHcJI" target="_blank" rel="noopener">Batch 5 | Session 6 | Kubernetes part 2</a></td>
+      <td class="td-dur">3h 21m</td>
+      <td class="td-covers">Kubernetes part 2 · StatefulSets · DaemonSets · Ingress controllers (NGINX) · cert-manager for TLS · Kubernetes RBAC · Horizontal Pod Autoscaler</td>
+    </tr>
+    <tr class="even" data-search="batch 5 | session 7 | terraform part-1 terraform part 1 · hcl syntax · aws resources (vpc/ec2/s3) · plan/apply workflow · state file · variable files · output values">
+      <td class="td-num">19</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=rVfUrD4NALs" target="_blank" rel="noopener">Batch 5 | Session 7 | Terraform part-1</a></td>
+      <td class="td-dur">2h 31m</td>
+      <td class="td-covers">Terraform part 1 · HCL syntax · AWS resources (VPC/EC2/S3) · plan/apply workflow · State file · Variable files · Output values</td>
+    </tr>
+    <tr class="odd" data-search="batch 5 | session 8 | terraform part-2 terraform part 2 · modules (local and registry) · remote state backend (s3+dynamodb) · workspaces · ci/cd integration with jenkins">
+      <td class="td-num">20</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=03gKzZ1B59o" target="_blank" rel="noopener">Batch 5 | Session 8 | Terraform part-2</a></td>
+      <td class="td-dur">2h 08m</td>
+      <td class="td-covers">Terraform part 2 · Modules (local and registry) · Remote state backend (S3+DynamoDB) · Workspaces · CI/CD integration with Jenkins</td>
+    </tr>
+    <tr class="even" data-search="batch 5 | project | jenkins, git, sonar, trivy integration demo end-to-end ci/cd project · git webhook trigger · jenkins declarative pipeline · sonarqube quality gate · trivy container image security scan · jfrog artifactory publish · docker build and push">
+      <td class="td-num">21</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=kkxWPr4lnbI" target="_blank" rel="noopener">Batch 5 | Project | Jenkins, Git, Sonar, Trivy integration demo</a></td>
+      <td class="td-dur">27m</td>
+      <td class="td-covers">End-to-end CI/CD project · Git webhook trigger · Jenkins declarative pipeline · SonarQube quality gate · Trivy container image security scan · JFrog Artifactory publish · Docker build and push</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage2a">
+<div class="stage-header" style="background:#c85000">
+  <div class="stage-icon">☁️</div>
+  <div>
+    <div class="stage-label">STAGE 2A</div>
+    <div class="stage-title">AWS Cloud — Core Services</div>
+  </div>
+  <div class="stage-meta">
+    <strong>17 sessions</strong>
+    35.0h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#c85000">
+  Deep-dive into Amazon Web Services after completing Stage 1. Learn VPC networking, EC2 compute, S3 storage, IAM security, databases (RDS/DynamoDB), serverless (Lambda), containers (EKS/ECS) and CloudWatch monitoring. Study the Jan 2026 bootcamp first (most up-to-date), then use the Apr 2025 sessions as supplementary practice.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#c85000">AWS Bootcamp Jan 2026 — Latest Series (Recommended)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 AWS PDFs</a>
+  </div>
+    <span class="section-hours">23.7h</span>
+    <div class="section-note">12 sessions · The most current AWS bootcamp with hands-on labs for all core AWS services.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#c85000">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="aws bootcamp session -1 (part-1) aws fundamentals · cloud concepts · global infrastructure (regions/azs) · iam user setup · aws console navigation · cli configuration · billing alerts">
+      <td class="td-num">22</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=6zoOYk9rVAI" target="_blank" rel="noopener">AWS Bootcamp Session -1 (Part-1)</a></td>
+      <td class="td-dur">1h 42m</td>
+      <td class="td-covers">AWS fundamentals · Cloud concepts · Global infrastructure (regions/AZs) · IAM user setup · AWS Console navigation · CLI configuration · Billing alerts</td>
+    </tr>
+    <tr class="odd" data-search="aws bootcamp session- 1 (part-2) aws fundamentals · cloud concepts · global infrastructure (regions/azs) · iam user setup · aws console navigation · cli configuration · billing alerts">
+      <td class="td-num">23</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Wqw6Ve8_BjE" target="_blank" rel="noopener">AWS Bootcamp Session- 1 (Part-2)</a></td>
+      <td class="td-dur">24m</td>
+      <td class="td-covers">AWS fundamentals · Cloud concepts · Global infrastructure (regions/AZs) · IAM user setup · AWS Console navigation · CLI configuration · Billing alerts</td>
+    </tr>
+    <tr class="even" data-search="aws bootcamp session- 2 vpc deep-dive · cidr planning · public/private subnets across azs · internet gateway · nat gateway · route tables · bastion host setup">
+      <td class="td-num">24</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=nDkyesSHT5k" target="_blank" rel="noopener">AWS Bootcamp Session- 2</a></td>
+      <td class="td-dur">2h 37m</td>
+      <td class="td-covers">VPC deep-dive · CIDR planning · Public/private subnets across AZs · Internet Gateway · NAT Gateway · Route tables · Bastion Host setup</td>
+    </tr>
+    <tr class="odd" data-search="aws bootcamp session- 3 ec2 mastery · ami selection · instance types · key pairs · security groups · elastic ip · ebs volumes · snapshots · instance connect">
+      <td class="td-num">25</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=JUp4biz4xZ0" target="_blank" rel="noopener">AWS Bootcamp Session- 3</a></td>
+      <td class="td-dur">2h 07m</td>
+      <td class="td-covers">EC2 mastery · AMI selection · Instance types · Key pairs · Security groups · Elastic IP · EBS volumes · Snapshots · Instance connect</td>
+    </tr>
+    <tr class="even" data-search="aws bootcamp session:- #4 ec2 auto scaling + alb · launch templates · asg with target tracking · application load balancer · https with acm · route 53">
+      <td class="td-num">26</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=XP98dKZ3RuM" target="_blank" rel="noopener">AWS Bootcamp Session:- #4</a></td>
+      <td class="td-dur">2h 04m</td>
+      <td class="td-covers">EC2 Auto Scaling + ALB · Launch templates · ASG with target tracking · Application Load Balancer · HTTPS with ACM · Route 53</td>
+    </tr>
+    <tr class="odd" data-search="aws bootcamp session - #5 s3 and storage · bucket creation · object versioning · static website hosting · lifecycle rules · s3 replication · transfer acceleration">
+      <td class="td-num">27</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=-L9yUqVCKhw" target="_blank" rel="noopener">AWS Bootcamp Session - #5</a></td>
+      <td class="td-dur">2h 07m</td>
+      <td class="td-covers">S3 and storage · Bucket creation · Object versioning · Static website hosting · Lifecycle rules · S3 replication · Transfer Acceleration</td>
+    </tr>
+    <tr class="even" data-search="aws bootcamp session -#6 iam deep-dive · users/groups/roles · inline vs managed policies · iam conditions · cross-account access · aws sso (identity center)">
+      <td class="td-num">28</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=vtJl9vvk6Dk" target="_blank" rel="noopener">AWS Bootcamp Session -#6</a></td>
+      <td class="td-dur">2h 21m</td>
+      <td class="td-covers">IAM deep-dive · Users/groups/roles · Inline vs managed policies · IAM conditions · Cross-account access · AWS SSO (Identity Center)</td>
+    </tr>
+    <tr class="odd" data-search="aws bootcamp session -#7 rds and databases · rds mysql/postgresql · multi-az · read replicas · parameter groups · elasticache redis · dynamodb basics">
+      <td class="td-num">29</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=an2kz4cjlFo" target="_blank" rel="noopener">AWS Bootcamp Session -#7</a></td>
+      <td class="td-dur">1h 55m</td>
+      <td class="td-covers">RDS and databases · RDS MySQL/PostgreSQL · Multi-AZ · Read replicas · Parameter groups · ElastiCache Redis · DynamoDB basics</td>
+    </tr>
+    <tr class="even" data-search="aws bootcamp session -#8 serverless · lambda functions · api gateway rest api · dynamodb integration · eventbridge scheduled events · step functions intro">
+      <td class="td-num">30</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=mB6p0-gBSvg" target="_blank" rel="noopener">AWS Bootcamp Session -#8</a></td>
+      <td class="td-dur">1h 37m</td>
+      <td class="td-covers">Serverless · Lambda functions · API Gateway REST API · DynamoDB integration · EventBridge scheduled events · Step Functions intro</td>
+    </tr>
+    <tr class="odd" data-search="aws bootcamp session- #9 containers on aws · ecs fargate task definitions and services · ecr image push · alb integration · ecs service auto-scaling">
+      <td class="td-num">31</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=0WLTvZdcfuc" target="_blank" rel="noopener">AWS Bootcamp Session- #9</a></td>
+      <td class="td-dur">2h 15m</td>
+      <td class="td-covers">Containers on AWS · ECS Fargate task definitions and services · ECR image push · ALB integration · ECS service auto-scaling</td>
+    </tr>
+    <tr class="even" data-search="aws bootcamp session- #10 eks · cluster creation · managed node groups · kubectl setup · deploying applications · helm · eks pod iam roles (irsa)">
+      <td class="td-num">32</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=PcU7SaGyfr8" target="_blank" rel="noopener">AWS Bootcamp Session- #10</a></td>
+      <td class="td-dur">2h 22m</td>
+      <td class="td-covers">EKS · Cluster creation · Managed node groups · kubectl setup · Deploying applications · Helm · EKS pod IAM roles (IRSA)</td>
+    </tr>
+    <tr class="odd" data-search="aws bootcamp session- #11 monitoring and cost · cloudwatch metrics/alarms/dashboards · cost explorer · budgets · trusted advisor · aws config · security hub">
+      <td class="td-num">33</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=TZoX7371xU8" target="_blank" rel="noopener">AWS Bootcamp Session- #11</a></td>
+      <td class="td-dur">2h 06m</td>
+      <td class="td-covers">Monitoring and cost · CloudWatch metrics/alarms/dashboards · Cost Explorer · Budgets · Trusted Advisor · AWS Config · Security Hub</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#c85000">AWS Sessions Apr 2025 — Supplementary Practice
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 AWS PDFs</a>
+  </div>
+    <span class="section-hours">11.2h</span>
+    <div class="section-note">5 core sessions · Doubt sessions excluded · Extra practice on EC2/ASG/Load Balancer, S3/IAM/Lambda, and EKS.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#c85000">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="awb bootcamp 2025 | session # 1 aws bootcamp kickoff 2025 · aws account setup · iam best practices (mfa/least privilege) · aws cli v2 configuration · vpc fundamentals · first ec2 launch · billing alerts">
+      <td class="td-num">34</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=gdobaS4W9eU" target="_blank" rel="noopener">AWB Bootcamp 2025 | Session # 1</a></td>
+      <td class="td-dur">2h 18m</td>
+      <td class="td-covers">AWS bootcamp kickoff 2025 · AWS account setup · IAM best practices (MFA/least privilege) · AWS CLI v2 configuration · VPC fundamentals · First EC2 launch · Billing alerts</td>
+    </tr>
+    <tr class="odd" data-search="ec2, asg, load balancer ec2 lifecycle management · auto scaling group with target tracking · launch template configuration · application load balancer with https · target group health checks · route 53 dns routing">
+      <td class="td-num">35</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=EVUQ6lWi-T8" target="_blank" rel="noopener">EC2, ASG, Load Balancer</a></td>
+      <td class="td-dur">2h 28m</td>
+      <td class="td-covers">EC2 lifecycle management · Auto Scaling Group with target tracking · Launch Template configuration · Application Load Balancer with HTTPS · Target group health checks · Route 53 DNS routing</td>
+    </tr>
+    <tr class="even" data-search="s3, iam, lambda - 12 apr s3 bucket creation · object versioning · bucket policies and acls · iam users/roles/policies with least privilege · lambda with s3 event trigger · execution role · environment variables">
+      <td class="td-num">36</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=YOIyjS7MGy4" target="_blank" rel="noopener">S3, IAM, Lambda - 12 Apr</a></td>
+      <td class="td-dur">2h 30m</td>
+      <td class="td-covers">S3 bucket creation · Object versioning · Bucket policies and ACLs · IAM users/roles/policies with least privilege · Lambda with S3 event trigger · Execution role · Environment variables</td>
+    </tr>
+    <tr class="odd" data-search="k8s demo session kubernetes deep-dive · cluster internals · scheduling · resource requests/limits · qos classes · node affinity/taints/tolerations · troubleshooting (pod crashes, oomkilled, imagepullbackoff)">
+      <td class="td-num">37</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=M75p8m7UuKk" target="_blank" rel="noopener">K8s Demo session</a></td>
+      <td class="td-dur">2h 12m</td>
+      <td class="td-covers">Kubernetes deep-dive · Cluster internals · Scheduling · Resource requests/limits · QoS classes · Node affinity/taints/tolerations · Troubleshooting (pod crashes, OOMKilled, ImagePullBackOff)</td>
+    </tr>
+    <tr class="even" data-search="eks amazon eks: cluster creation, managed node groups, fargate profiles, add-ons (coredns/kube-proxy/vpc-cni), cluster upgrades">
+      <td class="td-num">38</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ntUGs1OHJ-0" target="_blank" rel="noopener">EKS</a></td>
+      <td class="td-dur">1h 43m</td>
+      <td class="td-covers">Amazon EKS: cluster creation, managed node groups, Fargate profiles, add-ons (CoreDNS/kube-proxy/VPC-CNI), cluster upgrades</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage2b">
+<div class="stage-header" style="background:#0078d4">
+  <div class="stage-icon">🔷</div>
+  <div>
+    <div class="stage-label">STAGE 2B</div>
+    <div class="stage-title">Azure Cloud — Core Services</div>
+  </div>
+  <div class="stage-meta">
+    <strong>22 sessions</strong>
+    46.7h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#0078d4">
+  Microsoft Azure from fundamentals to advanced. Learn Azure networking (VNet), compute (VMs/App Service), storage, databases, security (Key Vault/Entra ID), Kubernetes (AKS) and Azure DevOps CI/CD. You can study Stage 2A and 2B in parallel or sequentially, depending on your job target.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#0078d4">Azure Bootcamp Jan 2026 — Latest Series (Recommended)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Azure PDFs</a>
+  </div>
+    <span class="section-hours">25.6h</span>
+    <div class="section-note">14 sessions · The most current Azure bootcamp with comprehensive hands-on labs.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#0078d4">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="azure bootcamp session-1 azure introduction · cloud models (iaas/paas/saas) · azure global infrastructure · resource groups/subscriptions/management groups · azure portal · cli/powershell · naming conventions">
+      <td class="td-num">39</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=8zZRPd5Adu8" target="_blank" rel="noopener">Azure Bootcamp Session-1</a></td>
+      <td class="td-dur">54m</td>
+      <td class="td-covers">Azure introduction · Cloud models (IaaS/PaaS/SaaS) · Azure global infrastructure · Resource groups/subscriptions/management groups · Azure Portal · CLI/PowerShell · Naming conventions</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session- 1 (part-2) azure introduction · cloud models (iaas/paas/saas) · azure global infrastructure · resource groups/subscriptions/management groups · azure portal · cli/powershell · naming conventions">
+      <td class="td-num">40</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=DdNLQuQBj8Q" target="_blank" rel="noopener">Azure Bootcamp Session- 1 (Part-2)</a></td>
+      <td class="td-dur">1h 13m</td>
+      <td class="td-covers">Azure introduction · Cloud models (IaaS/PaaS/SaaS) · Azure global infrastructure · Resource groups/subscriptions/management groups · Azure Portal · CLI/PowerShell · Naming conventions</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session-2 azure networking · virtual networks · subnets · nsgs · route tables · azure bastion · vnet peering · azure dns · private dns zones">
+      <td class="td-num">41</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=u_bOUIFwCtI" target="_blank" rel="noopener">Azure Bootcamp Session-2</a></td>
+      <td class="td-dur">2h 05m</td>
+      <td class="td-covers">Azure networking · Virtual Networks · Subnets · NSGs · Route tables · Azure Bastion · VNet peering · Azure DNS · Private DNS zones</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session-3 azure compute · virtual machines (sizes/availability sets/scale sets) · managed disks · proximity placement groups · azure spot instances">
+      <td class="td-num">42</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=QQusOpsvlWE" target="_blank" rel="noopener">Azure Bootcamp Session-3</a></td>
+      <td class="td-dur">1h 35m</td>
+      <td class="td-covers">Azure compute · Virtual Machines (sizes/availability sets/scale sets) · Managed disks · Proximity placement groups · Azure Spot instances</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session-#4 azure app services and storage · app service plans · deployment slots · app service environment · azure storage (blob/files/tables)">
+      <td class="td-num">43</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=UWcQiANJpPY" target="_blank" rel="noopener">Azure Bootcamp Session-#4</a></td>
+      <td class="td-dur">1h 59m</td>
+      <td class="td-covers">Azure App Services and storage · App Service plans · Deployment slots · App Service Environment · Azure Storage (Blob/Files/Tables)</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session- #5 azure databases · azure sql database · cosmos db · azure cache for redis · azure database for postgresql/mysql">
+      <td class="td-num">44</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=5XZdcmnk744" target="_blank" rel="noopener">Azure Bootcamp Session- #5</a></td>
+      <td class="td-dur">1h 55m</td>
+      <td class="td-covers">Azure databases · Azure SQL Database · Cosmos DB · Azure Cache for Redis · Azure Database for PostgreSQL/MySQL</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session- #6 azure kubernetes service (aks) · cluster provisioning · node pools · rbac · azure cni · application gateway ingress controller">
+      <td class="td-num">45</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=PoyfqEugQKY" target="_blank" rel="noopener">Azure Bootcamp Session- #6</a></td>
+      <td class="td-dur">1h 39m</td>
+      <td class="td-covers">Azure Kubernetes Service (AKS) · Cluster provisioning · Node pools · RBAC · Azure CNI · Application Gateway Ingress Controller</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session- #7 azure security · key vault · azure ad (entra id) · managed identities · rbac · conditional access · defender for cloud">
+      <td class="td-num">46</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=cUEbplvhk_w" target="_blank" rel="noopener">Azure Bootcamp Session- #7</a></td>
+      <td class="td-dur">1h 54m</td>
+      <td class="td-covers">Azure security · Key Vault · Azure AD (Entra ID) · Managed Identities · RBAC · Conditional Access · Defender for Cloud</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session- #8 azure devops · boards · repos · pipelines (yaml) · artifacts · test plans · environments · deployment strategies">
+      <td class="td-num">47</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Z_mM2kjqX5s" target="_blank" rel="noopener">Azure Bootcamp Session- #8</a></td>
+      <td class="td-dur">1h 45m</td>
+      <td class="td-covers">Azure DevOps · Boards · Repos · Pipelines (YAML) · Artifacts · Test Plans · Environments · Deployment strategies</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session- #9 azure monitoring · azure monitor · log analytics workspace · application insights · alerts · metrics · diagnostic settings">
+      <td class="td-num">48</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=cUAVtcZnr0I" target="_blank" rel="noopener">Azure Bootcamp Session- #9</a></td>
+      <td class="td-dur">1h 52m</td>
+      <td class="td-covers">Azure monitoring · Azure Monitor · Log Analytics workspace · Application Insights · Alerts · Metrics · Diagnostic settings</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session- #10 azure serverless · azure functions · logic apps · event grid · service bus · api management (apim)">
+      <td class="td-num">49</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=TyF7-8Nxmdc" target="_blank" rel="noopener">Azure Bootcamp Session- #10</a></td>
+      <td class="td-dur">1h 57m</td>
+      <td class="td-covers">Azure serverless · Azure Functions · Logic Apps · Event Grid · Service Bus · API Management (APIM)</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session- #11 azure governance · policy · blueprints · management groups · cost management · resource tags · azure advisor">
+      <td class="td-num">50</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ztqaFVsUitw" target="_blank" rel="noopener">Azure Bootcamp Session- #11</a></td>
+      <td class="td-dur">1h 46m</td>
+      <td class="td-covers">Azure governance · Policy · Blueprints · Management Groups · Cost Management · Resource tags · Azure Advisor</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session- #12 azure advanced networking · application gateway waf · azure front door · traffic manager · expressroute · vpn gateway">
+      <td class="td-num">51</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=L6DVELMIJhk" target="_blank" rel="noopener">Azure Bootcamp Session- #12</a></td>
+      <td class="td-dur">1h 44m</td>
+      <td class="td-covers">Azure advanced networking · Application Gateway WAF · Azure Front Door · Traffic Manager · ExpressRoute · VPN Gateway</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session- #13 azure container services · acr · aks advanced (workload identity, keda) · azure container apps · container instances">
+      <td class="td-num">52</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=epGpn1lls7o" target="_blank" rel="noopener">Azure Bootcamp Session- #13</a></td>
+      <td class="td-dur">1h 34m</td>
+      <td class="td-covers">Azure container services · ACR · AKS advanced (Workload Identity, KEDA) · Azure Container Apps · Container Instances</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session- #14 azure project · end-to-end deployment with terraform · aks · acr · azure devops ci/cd pipeline · monitoring">
+      <td class="td-num">53</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=11yh5TMaTSg" target="_blank" rel="noopener">Azure Bootcamp Session- #14</a></td>
+      <td class="td-dur">1h 37m</td>
+      <td class="td-covers">Azure project · End-to-end deployment with Terraform · AKS · ACR · Azure DevOps CI/CD pipeline · Monitoring</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#0078d4">Azure Bootcamp — Original Series (Supplementary)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Azure PDFs</a>
+  </div>
+    <span class="section-hours">21.1h</span>
+    <div class="section-note">7 sessions · Supplementary resource to reinforce Azure fundamentals from a different angle.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#0078d4">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="azure bootcamp session # 1 | azure  - introduction to cloud computing and azure fundamentals azure introduction · cloud models (iaas/paas/saas) · azure global infrastructure · resource groups/subscriptions/management groups · azure portal · cli/powershell · naming conventions">
+      <td class="td-num">54</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=9OJSodO4BTM" target="_blank" rel="noopener">Azure Bootcamp Session # 1 | Azure  - Introduction to Cloud Computing and Azure Fundamentals</a></td>
+      <td class="td-dur">3h 08m</td>
+      <td class="td-covers">Azure introduction · Cloud models (IaaS/PaaS/SaaS) · Azure global infrastructure · Resource groups/subscriptions/management groups · Azure Portal · CLI/PowerShell · Naming conventions</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session # 2 | azure  - vnet &amp; networking azure networking · virtual networks · subnets · nsgs · route tables · azure bastion · vnet peering · azure dns · private dns zones">
+      <td class="td-num">55</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=huUAjR7cURw" target="_blank" rel="noopener">Azure Bootcamp Session # 2 | Azure  - VNet &amp; Networking</a></td>
+      <td class="td-dur">3h 21m</td>
+      <td class="td-covers">Azure networking · Virtual Networks · Subnets · NSGs · Route tables · Azure Bastion · VNet peering · Azure DNS · Private DNS zones</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session # 3 | azure  - storage &amp; security azure compute · virtual machines (sizes/availability sets/scale sets) · managed disks · proximity placement groups · azure spot instances">
+      <td class="td-num">56</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=VNVvDHJU-ow" target="_blank" rel="noopener">Azure Bootcamp Session # 3 | Azure  - Storage &amp; Security</a></td>
+      <td class="td-dur">2h 59m</td>
+      <td class="td-covers">Azure compute · Virtual Machines (sizes/availability sets/scale sets) · Managed disks · Proximity placement groups · Azure Spot instances</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session # 4 | azure virtual machines, app services, and containers azure app services and storage · app service plans · deployment slots · app service environment · azure storage (blob/files/tables)">
+      <td class="td-num">57</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ff1moA8dxjo" target="_blank" rel="noopener">Azure Bootcamp Session # 4 | Azure Virtual Machines, App Services, and Containers</a></td>
+      <td class="td-dur">3h 13m</td>
+      <td class="td-covers">Azure App Services and storage · App Service plans · Deployment slots · App Service Environment · Azure Storage (Blob/Files/Tables)</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session # 5 | azure monitor and backup azure databases · azure sql database · cosmos db · azure cache for redis · azure database for postgresql/mysql">
+      <td class="td-num">58</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=pP0LLOuRdyk" target="_blank" rel="noopener">Azure Bootcamp Session # 5 | Azure Monitor and Backup</a></td>
+      <td class="td-dur">2h 59m</td>
+      <td class="td-covers">Azure databases · Azure SQL Database · Cosmos DB · Azure Cache for Redis · Azure Database for PostgreSQL/MySQL</td>
+    </tr>
+    <tr class="odd" data-search="azure bootcamp session # 6 | azure functions &amp; azure devops azure kubernetes service (aks) · cluster provisioning · node pools · rbac · azure cni · application gateway ingress controller">
+      <td class="td-num">59</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=fN9pg55cC_U" target="_blank" rel="noopener">Azure Bootcamp Session # 6 | Azure Functions &amp; Azure DevOps</a></td>
+      <td class="td-dur">2h 23m</td>
+      <td class="td-covers">Azure Kubernetes Service (AKS) · Cluster provisioning · Node pools · RBAC · Azure CNI · Application Gateway Ingress Controller</td>
+    </tr>
+    <tr class="even" data-search="azure bootcamp session # 7 | azure aks azure security · key vault · azure ad (entra id) · managed identities · rbac · conditional access · defender for cloud">
+      <td class="td-num">60</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ugypfy0yr4s" target="_blank" rel="noopener">Azure Bootcamp Session # 7 | Azure AKS</a></td>
+      <td class="td-dur">3h 02m</td>
+      <td class="td-covers">Azure security · Key Vault · Azure AD (Entra ID) · Managed Identities · RBAC · Conditional Access · Defender for Cloud</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage3">
+<div class="stage-header" style="background:#5800a0">
+  <div class="stage-icon">🛠️</div>
+  <div>
+    <div class="stage-label">STAGE 3</div>
+    <div class="stage-title">DevOps Tools — Specialist Bootcamps</div>
+  </div>
+  <div class="stage-meta">
+    <strong>15 sessions</strong>
+    32.3h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#5800a0">
+  After completing Stages 1 and 2, go deeper into the core DevOps toolchain. These specialist bootcamps focus exclusively on Docker/Kubernetes, Terraform, and live lab sessions to solidify hands-on skills.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#5800a0">Practical Docker & Kubernetes Bootcamp Jan 2026
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Docker &amp; K8s PDFs</a>
+  </div>
+    <span class="section-hours">12.3h</span>
+    <div class="section-note">6 sessions · From Docker basics to production Kubernetes — comprehensive container specialist course.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#5800a0">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="practical docker and kubernetes bootcamp session #1 docker fundamentals · installation · cli commands · running containers · docker networking (bridge/host/none) · docker volumes">
+      <td class="td-num">61</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=khuy3Rt9MZY" target="_blank" rel="noopener">Practical Docker and Kubernetes Bootcamp Session #1</a></td>
+      <td class="td-dur">2h 17m</td>
+      <td class="td-covers">Docker fundamentals · Installation · CLI commands · Running containers · Docker networking (bridge/host/none) · Docker volumes</td>
+    </tr>
+    <tr class="odd" data-search="practical docker and kubernetes bootcamp session #2 dockerfile authoring · from/run/copy/cmd/entrypoint instructions · multi-stage builds · image optimisation · .dockerignore · docker hub push">
+      <td class="td-num">62</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=J5HA73HZkrc" target="_blank" rel="noopener">Practical Docker and Kubernetes Bootcamp Session #2</a></td>
+      <td class="td-dur">2h 17m</td>
+      <td class="td-covers">Dockerfile authoring · FROM/RUN/COPY/CMD/ENTRYPOINT instructions · Multi-stage builds · Image optimisation · .dockerignore · Docker Hub push</td>
+    </tr>
+    <tr class="even" data-search="practical docker and kubernetes bootcamp session #3 docker compose · service definitions · networking between containers · volume mounts · environment files · docker-compose cli · health checks">
+      <td class="td-num">63</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=CrzmIjtG5zc" target="_blank" rel="noopener">Practical Docker and Kubernetes Bootcamp Session #3</a></td>
+      <td class="td-dur">2h 19m</td>
+      <td class="td-covers">Docker Compose · Service definitions · Networking between containers · Volume mounts · Environment files · docker-compose CLI · Health checks</td>
+    </tr>
+    <tr class="odd" data-search="practical docker and kubernetes bootcamp session #4 kubernetes architecture · control plane components · worker node components · kubectl setup · creating pods/deployments/services via manifests">
+      <td class="td-num">64</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=0ucP7CoL9JE" target="_blank" rel="noopener">Practical Docker and Kubernetes Bootcamp Session #4</a></td>
+      <td class="td-dur">2h 26m</td>
+      <td class="td-covers">Kubernetes architecture · Control plane components · Worker node components · kubectl setup · Creating Pods/Deployments/Services via manifests</td>
+    </tr>
+    <tr class="even" data-search="practical docker and kubernetes bootcamp session #5 kubernetes intermediate · configmaps · secrets · persistent volumes/claims · namespaces · resourcequotas · limitranges · rbac basics">
+      <td class="td-num">65</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=GWJf1ufz3e8" target="_blank" rel="noopener">Practical Docker and Kubernetes Bootcamp Session #5</a></td>
+      <td class="td-dur">1h 13m</td>
+      <td class="td-covers">Kubernetes intermediate · ConfigMaps · Secrets · Persistent Volumes/Claims · Namespaces · ResourceQuotas · LimitRanges · RBAC basics</td>
+    </tr>
+    <tr class="odd" data-search="practical docker and kubernetes bootcamp session #6 kubernetes advanced · hpa · ingress with nginx · helm chart deployment · rolling updates · blue/green deployments · troubleshooting">
+      <td class="td-num">66</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=fJ9C7FCBK_k" target="_blank" rel="noopener">Practical Docker and Kubernetes Bootcamp Session #6</a></td>
+      <td class="td-dur">1h 44m</td>
+      <td class="td-covers">Kubernetes advanced · HPA · Ingress with NGINX · Helm chart deployment · Rolling updates · Blue/green deployments · Troubleshooting</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#5800a0">Terraform Bootcamp Feb 2026
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Terraform PDFs</a>
+  </div>
+    <span class="section-hours">7.3h</span>
+    <div class="section-note">4 sessions · IaC from first principles through modules, remote state and CI/CD integration.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#5800a0">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="terraform bootcamp #1 session- 1 terraform introduction · hcl syntax · providers · resources · init/plan/apply/destroy workflow · state file concept · aws provider configuration">
+      <td class="td-num">67</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ZsUpxh1TgF4" target="_blank" rel="noopener">Terraform Bootcamp #1 Session- 1</a></td>
+      <td class="td-dur">1h 34m</td>
+      <td class="td-covers">Terraform introduction · HCL syntax · Providers · Resources · init/plan/apply/destroy workflow · State file concept · AWS provider configuration</td>
+    </tr>
+    <tr class="odd" data-search="terraform bootcamp #1 session- 2 terraform intermediate · variables (input/local/output) · data sources · count and for_each meta-arguments · dynamic blocks · terraform.tfvars">
+      <td class="td-num">68</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=2-gsboHSJ5g" target="_blank" rel="noopener">Terraform Bootcamp #1 Session- 2</a></td>
+      <td class="td-dur">2h 03m</td>
+      <td class="td-covers">Terraform intermediate · Variables (input/local/output) · Data sources · count and for_each meta-arguments · Dynamic blocks · terraform.tfvars</td>
+    </tr>
+    <tr class="even" data-search="terraform bootcamp #1 session- 3 terraform modules · creating reusable modules · module inputs/outputs · module versioning · public registry modules · calling nested modules">
+      <td class="td-num">69</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=UIdNERevpbo" target="_blank" rel="noopener">Terraform Bootcamp #1 Session- 3</a></td>
+      <td class="td-dur">1h 26m</td>
+      <td class="td-covers">Terraform modules · Creating reusable modules · Module inputs/outputs · Module versioning · Public registry modules · Calling nested modules</td>
+    </tr>
+    <tr class="odd" data-search="terraform bootcamp #1 session- 4 terraform advanced · remote state with s3+dynamodb · workspaces for environments · terragrunt for dry configurations · ci/cd with terraform">
+      <td class="td-num">70</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=4iKGSjOg1Eg" target="_blank" rel="noopener">Terraform Bootcamp #1 Session- 4</a></td>
+      <td class="td-dur">2h 11m</td>
+      <td class="td-covers">Terraform advanced · Remote state with S3+DynamoDB · Workspaces for environments · Terragrunt for DRY configurations · CI/CD with Terraform</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#5800a0">DevOps Live Sessions — March 2025 (Core Sessions Only)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 DevOps PDFs</a>
+  </div>
+    <span class="section-hours">12.7h</span>
+    <div class="section-note">5 core sessions · Doubt sessions excluded · Live labs: Linux/Git, GitHub Actions, Docker and Kubernetes.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#5800a0">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="batch # 8 | session # 1 advanced devops session · complete environment setup · tool integration (jenkins/sonarqube/trivy/artifactory) · production-grade pipeline design · best practices review">
+      <td class="td-num">71</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=VipKg8dTWYg" target="_blank" rel="noopener">Batch # 8 | Session # 1</a></td>
+      <td class="td-dur">2h 47m</td>
+      <td class="td-covers">Advanced DevOps session · Complete environment setup · Tool integration (Jenkins/SonarQube/Trivy/Artifactory) · Production-grade pipeline design · Best practices review</td>
+    </tr>
+    <tr class="odd" data-search="linux, git and branching linux: process management, networking commands, system administration · git: advanced branching (gitflow), rebasing, cherry-pick, stash, git hooks, large repository management">
+      <td class="td-num">72</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=1MQDeIzAkVQ" target="_blank" rel="noopener">Linux, Git and Branching</a></td>
+      <td class="td-dur">2h 32m</td>
+      <td class="td-covers">Linux: process management, networking commands, system administration · Git: advanced branching (GitFlow), rebasing, cherry-pick, stash, git hooks, large repository management</td>
+    </tr>
+    <tr class="even" data-search="github actions and artifactory github actions workflow files · triggers · jobs · steps · matrix strategy · artifactory integration · publishing build artifacts · downloading dependencies · build info · property sets">
+      <td class="td-num">73</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=UtB_H1k9S3w" target="_blank" rel="noopener">GitHub Actions and Artifactory</a></td>
+      <td class="td-dur">2h 57m</td>
+      <td class="td-covers">GitHub Actions workflow files · Triggers · Jobs · Steps · Matrix strategy · Artifactory integration · Publishing build artifacts · Downloading dependencies · Build info · Property sets</td>
+    </tr>
+    <tr class="odd" data-search="docker docker fundamentals: images, containers, dockerfile best practices, multi-stage builds, docker networking, volumes, docker compose">
+      <td class="td-num">74</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=PV9noGy6TtE" target="_blank" rel="noopener">Docker</a></td>
+      <td class="td-dur">2h 08m</td>
+      <td class="td-covers">Docker fundamentals: images, containers, Dockerfile best practices, multi-stage builds, Docker networking, volumes, Docker Compose</td>
+    </tr>
+    <tr class="even" data-search="k8s - session # 1 kubernetes deep-dive · cluster internals · scheduling · resource requests/limits · qos classes · node affinity/taints/tolerations · troubleshooting (pod crashes, oomkilled, imagepullbackoff)">
+      <td class="td-num">75</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=f7WRssvhLtc" target="_blank" rel="noopener">K8s - Session # 1</a></td>
+      <td class="td-dur">2h 16m</td>
+      <td class="td-covers">Kubernetes deep-dive · Cluster internals · Scheduling · Resource requests/limits · QoS classes · Node affinity/taints/tolerations · Troubleshooting (pod crashes, OOMKilled, ImagePullBackOff)</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage4">
+<div class="stage-header" style="background:#b00000">
+  <div class="stage-icon">🏛️</div>
+  <div>
+    <div class="stage-label">STAGE 4</div>
+    <div class="stage-title">Advanced AWS — Enterprise Architecture</div>
+  </div>
+  <div class="stage-meta">
+    <strong>9 sessions</strong>
+    20.7h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#b00000">
+  Enterprise-grade AWS. Prerequisites: Stages 1 and 2A. Covers advanced VPC, multi-AZ networking, advanced IAM and encryption, EKS/ECS/ECR container services, Aurora databases, Secrets Manager, and the AWS Well-Architected Framework. Includes a dedicated session on building your DevOps CV.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#b00000">Advanced AWS Bootcamp
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Advanced AWS PDFs</a>
+  </div>
+    <span class="section-hours">20.7h</span>
+    <div class="section-note">9 sessions · Enterprise AWS services and architecture patterns, plus DevOps CV/career session.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#b00000">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="advanced aws bootcamp | session 1 | introduction | vpc | tools advanced aws intro · vpc advanced features (transit gateway, privatelink, vpc flow logs) · tools setup (aws cli v2, eksctl, kubectl, terraform)">
+      <td class="td-num">76</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Xi-E-Uvd72w" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 1 | Introduction | VPC | Tools</a></td>
+      <td class="td-dur">2h 41m</td>
+      <td class="td-covers">Advanced AWS intro · VPC advanced features (Transit Gateway, PrivateLink, VPC Flow Logs) · Tools setup (AWS CLI v2, eksctl, kubectl, Terraform)</td>
+    </tr>
+    <tr class="odd" data-search="advanced aws bootcamp | session 2 | networking services advanced networking · route 53 advanced routing policies (latency/weighted/geolocation/failover) · cloudfront cdn · global accelerator · direct connect · site-to-site vpn">
+      <td class="td-num">77</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=w4OGUzFRqTQ" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 2 | Networking Services</a></td>
+      <td class="td-dur">2h 14m</td>
+      <td class="td-covers">Advanced networking · Route 53 advanced routing policies (latency/weighted/geolocation/failover) · CloudFront CDN · Global Accelerator · Direct Connect · Site-to-Site VPN</td>
+    </tr>
+    <tr class="even" data-search="advanced aws bootcamp | session 3 | s3 s3 advanced · bucket policies · cors · object lambda · s3 replication (crr/srr) · s3 event notifications · s3 batch operations · glacier vault">
+      <td class="td-num">78</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=YlRvJTNQlsg" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 3 | S3</a></td>
+      <td class="td-dur">2h 16m</td>
+      <td class="td-covers">S3 advanced · Bucket policies · CORS · Object Lambda · S3 Replication (CRR/SRR) · S3 Event Notifications · S3 Batch Operations · Glacier vault</td>
+    </tr>
+    <tr class="odd" data-search="advanced aws bootcamp | session 4 | ec2 | lambda ec2 and lambda advanced · dedicated hosts/instances · enhanced networking (ena) · placement groups · ec2 image builder · lambda layers and container images">
+      <td class="td-num">79</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=hIPJ72IBMaQ" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 4 | EC2 | Lambda</a></td>
+      <td class="td-dur">2h 33m</td>
+      <td class="td-covers">EC2 and Lambda advanced · Dedicated Hosts/Instances · Enhanced Networking (ENA) · Placement Groups · EC2 Image Builder · Lambda layers and container images</td>
+    </tr>
+    <tr class="even" data-search="advanced aws bootcamp | session 5 | how to build devops cv | other faq devops cv building · technical cv structure · skills matrix · project descriptions (star format) · github portfolio · linkedin optimisation · ats keywords">
+      <td class="td-num">80</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=HsWrLWl10E8" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 5 | How to build DevOps CV | Other FAQ</a></td>
+      <td class="td-dur">2h 14m</td>
+      <td class="td-covers">DevOps CV building · Technical CV structure · Skills matrix · Project descriptions (STAR format) · GitHub portfolio · LinkedIn optimisation · ATS keywords</td>
+    </tr>
+    <tr class="odd" data-search="advanced aws bootcamp | session 6 | rds | nosql | elasticache databases deep-dive · rds advanced (aurora global, performance insights) · dynamodb advanced (gsi/lsi, dax, streams, global tables) · elasticache clustering">
+      <td class="td-num">81</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=eUkhuvcB-gM" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 6 | RDS | NOSQL | Elasticache</a></td>
+      <td class="td-dur">2h 37m</td>
+      <td class="td-covers">Databases deep-dive · RDS advanced (Aurora Global, Performance Insights) · DynamoDB advanced (GSI/LSI, DAX, Streams, Global Tables) · ElastiCache clustering</td>
+    </tr>
+    <tr class="even" data-search="advanced aws bootcamp | session 7 | iam | kms | asm | acm | api | encryption security services · iam permission boundaries · iam access analyzer · kms key policies · secrets manager rotation · acm private ca · api gateway authorisation">
+      <td class="td-num">82</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=5ZskZ3J31lg" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 7 | IAM | KMS | ASM | ACM | API | Encryption</a></td>
+      <td class="td-dur">1h 52m</td>
+      <td class="td-covers">Security services · IAM Permission Boundaries · IAM Access Analyzer · KMS key policies · Secrets Manager rotation · ACM private CA · API Gateway authorisation</td>
+    </tr>
+    <tr class="odd" data-search="advanced aws bootcamp | session 8 | eks | ecr | ecs container services · eks add-ons (cluster autoscaler/karpenter, aws load balancer controller, ebs/efs csi drivers) · ecr lifecycle policies · ecs capacity providers">
+      <td class="td-num">83</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=FCOqGw3EnKo" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 8 | EKS | ECR | ECS</a></td>
+      <td class="td-dur">2h 00m</td>
+      <td class="td-covers">Container services · EKS add-ons (Cluster Autoscaler/Karpenter, AWS Load Balancer Controller, EBS/EFS CSI drivers) · ECR lifecycle policies · ECS capacity providers</td>
+    </tr>
+    <tr class="even" data-search="advanced aws bootcamp | session 9 | other aws services | architecture best practices aws services breadth · sqs/sns/eventbridge · cloudformation/cdk · service catalog · step functions · codepipeline · kinesis · guardduty · well-architected review">
+      <td class="td-num">84</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=1Viksgk6H2M" target="_blank" rel="noopener">Advanced AWS Bootcamp | Session 9 | Other AWS Services | Architecture Best Practices</a></td>
+      <td class="td-dur">2h 11m</td>
+      <td class="td-covers">AWS services breadth · SQS/SNS/EventBridge · CloudFormation/CDK · Service Catalog · Step Functions · CodePipeline · Kinesis · GuardDuty · Well-Architected review</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage5">
+<div class="stage-header" style="background:#007800">
+  <div class="stage-icon">💼</div>
+  <div>
+    <div class="stage-label">STAGE 5</div>
+    <div class="stage-title">Real-World Projects — Build Your Portfolio</div>
+  </div>
+  <div class="stage-meta">
+    <strong>43 sessions</strong>
+    68.7h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#007800">
+  Apply everything from Stages 1–4 through five industry-grade projects. Each project is multi-part, uses real AWS/Azure infrastructure, and produces portfolio-worthy architecture you can showcase to employers. Complete Projects 1–3 before attempting Projects 4 and 5.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#007800">Project 1 — Scalable, Self-Healing & Secure AWS Infrastructure
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Project 1 PDFs</a>
+  </div>
+    <span class="section-hours">11.0h</span>
+    <div class="section-note">6 parts · Production-grade app with Terraform, ASG, ALB, RDS Multi-AZ, IAM and CloudWatch.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#007800">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="build scalable, self healing and secure infrastructure and application deployment on aws - part 1 project kickoff · architecture overview · vpc design (public/private subnets) · terraform module setup · ec2 ami selection and security group configuration">
+      <td class="td-num">85</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=6Cc8uWdUQlI" target="_blank" rel="noopener">Build Scalable, Self Healing and Secure Infrastructure and Application Deployment on AWS - Part 1</a></td>
+      <td class="td-dur">2h 10m</td>
+      <td class="td-covers">Project kickoff · Architecture overview · VPC design (public/private subnets) · Terraform module setup · EC2 AMI selection and security group configuration</td>
+    </tr>
+    <tr class="odd" data-search="build scalable, self healing and secure infrastructure and application deployment on aws - part 2 ec2 auto scaling group + application load balancer · launch template · asg policies · alb listeners and target groups · health check configuration">
+      <td class="td-num">86</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=DZ-vXgcsn_o" target="_blank" rel="noopener">Build Scalable, Self Healing and Secure Infrastructure and Application Deployment on AWS - Part 2</a></td>
+      <td class="td-dur">1h 29m</td>
+      <td class="td-covers">EC2 Auto Scaling Group + Application Load Balancer · Launch template · ASG policies · ALB listeners and target groups · Health check configuration</td>
+    </tr>
+    <tr class="even" data-search="build scalable, self healing and secure infrastructure and application deployment on aws - part 3 rds multi-az database · subnet groups · parameter groups · automated backups · rds security group rules · database connectivity testing">
+      <td class="td-num">87</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=NzbM3CfMxhQ" target="_blank" rel="noopener">Build Scalable, Self Healing and Secure Infrastructure and Application Deployment on AWS - Part 3</a></td>
+      <td class="td-dur">1h 37m</td>
+      <td class="td-covers">RDS Multi-AZ database · Subnet groups · Parameter groups · Automated backups · RDS security group rules · Database connectivity testing</td>
+    </tr>
+    <tr class="odd" data-search="build scalable, self healing and secure infrastructure and application deployment on aws - part 4 s3 bucket policies · iam roles for ec2 (instance profiles) · cloudwatch alarms for ec2/rds · sns notifications and alerting setup">
+      <td class="td-num">88</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=U9WlPjIECyY" target="_blank" rel="noopener">Build Scalable, Self Healing and Secure Infrastructure and Application Deployment on AWS - Part 4</a></td>
+      <td class="td-dur">1h 05m</td>
+      <td class="td-covers">S3 bucket policies · IAM roles for EC2 (instance profiles) · CloudWatch alarms for EC2/RDS · SNS notifications and alerting setup</td>
+    </tr>
+    <tr class="even" data-search="build scalable, self healing and secure infrastructure and application deployment on aws - part 5 application deployment pipeline · jenkins/github actions ci/cd · docker containerisation · ecs or direct ec2 deployment · rollback strategy">
+      <td class="td-num">89</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=wWex3aV_DZY" target="_blank" rel="noopener">Build Scalable, Self Healing and Secure Infrastructure and Application Deployment on AWS - Part 5</a></td>
+      <td class="td-dur">1h 51m</td>
+      <td class="td-covers">Application deployment pipeline · Jenkins/GitHub Actions CI/CD · Docker containerisation · ECS or direct EC2 deployment · Rollback strategy</td>
+    </tr>
+    <tr class="odd" data-search="build scalable, self healing and secure infrastructure and application deployment on aws - part 6 final integration testing · security hardening (ssm session manager, no public ssh) · cost estimation · architecture diagram · project documentation">
+      <td class="td-num">90</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=rJd6l4SzQus" target="_blank" rel="noopener">Build Scalable, Self Healing and Secure Infrastructure and Application Deployment on AWS - Part 6</a></td>
+      <td class="td-dur">2h 46m</td>
+      <td class="td-covers">Final integration testing · Security hardening (SSM Session Manager, no public SSH) · Cost estimation · Architecture diagram · Project documentation</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#007800">Project 2 — Golden AMI + ArgoCD GitOps on AWS EKS
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Project 2 PDFs</a>
+  </div>
+    <span class="section-hours">14.7h</span>
+    <div class="section-note">7 parts + Packer bonus · Automated AMI pipeline with Packer, Jenkins, ECR, EKS and ArgoCD GitOps.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#007800">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 1 project architecture · golden ami strategy with packer · jenkins pipeline design · ecr container registry · eks cluster planning">
+      <td class="td-num">91</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=1MhCsar5Bbo" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 1</a></td>
+      <td class="td-dur">2h 52m</td>
+      <td class="td-covers">Project architecture · Golden AMI strategy with Packer · Jenkins pipeline design · ECR container registry · EKS cluster planning</td>
+    </tr>
+    <tr class="odd" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 2 packer template authoring · hcl2 syntax · aws builder · shell provisioners · ami tagging · automated build triggers from jenkins">
+      <td class="td-num">92</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=mVlNVynwn74" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 2</a></td>
+      <td class="td-dur">1h 53m</td>
+      <td class="td-covers">Packer template authoring · HCL2 syntax · AWS builder · Shell provisioners · AMI tagging · Automated build triggers from Jenkins</td>
+    </tr>
+    <tr class="even" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 3 eks cluster provisioning with terraform · vpc cni configuration · managed node groups · oidc provider for irsa (iam roles for service accounts)">
+      <td class="td-num">93</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=-A3L-0IYv_0" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 3</a></td>
+      <td class="td-dur">2h 19m</td>
+      <td class="td-covers">EKS cluster provisioning with Terraform · VPC CNI configuration · Managed node groups · OIDC provider for IRSA (IAM roles for service accounts)</td>
+    </tr>
+    <tr class="odd" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 4 argocd installation and configuration · application crds · git repository connection · sync policy (auto/manual) · health status monitoring">
+      <td class="td-num">94</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=7Aw1f5ha6_8" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 4</a></td>
+      <td class="td-dur">1h 37m</td>
+      <td class="td-covers">ArgoCD installation and configuration · Application CRDs · Git repository connection · Sync policy (auto/manual) · Health status monitoring</td>
+    </tr>
+    <tr class="even" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 5 helm chart creation · deployment, service, ingress templates · values.yaml parameterisation · chart testing">
+      <td class="td-num">95</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=1j5SOY2oC1w" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 5</a></td>
+      <td class="td-dur">1h 33m</td>
+      <td class="td-covers">Helm chart creation · Deployment, service, ingress templates · values.yaml parameterisation · Chart testing</td>
+    </tr>
+    <tr class="odd" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 6 full gitops workflow · git push → argocd sync → helm deploy to eks · end-to-end pipeline validation · troubleshooting">
+      <td class="td-num">96</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=TKKycVi9flY" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 6</a></td>
+      <td class="td-dur">1h 50m</td>
+      <td class="td-covers">Full GitOps workflow · Git push → ArgoCD sync → Helm deploy to EKS · End-to-end pipeline validation · Troubleshooting</td>
+    </tr>
+    <tr class="even" data-search="automated golden ami and application deployment on aws eks following argocd gitops approach - part 7 multi-environment setup · dev/staging/prod namespaces · argocd applicationset · kustomize overlays · production deployment checklist">
+      <td class="td-num">97</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=DCGMdfw2Nv0" target="_blank" rel="noopener">Automated Golden AMI and Application Deployment on AWS EKS Following ArgoCD GitOps approach - Part 7</a></td>
+      <td class="td-dur">1h 35m</td>
+      <td class="td-covers">Multi-environment setup · dev/staging/prod namespaces · ArgoCD ApplicationSet · Kustomize overlays · Production deployment checklist</td>
+    </tr>
+    <tr class="odd" data-search="hashicorp packer simplified | build automated aws ami #cloud #aws #devops hashicorp packer deep-dive · hcl2 template syntax · aws ebs builder · shell and ansible provisioners · ami tagging strategy · automated ami pipeline in jenkins · ami sharing across accounts">
+      <td class="td-num">98</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=BAlG6hXIGok" target="_blank" rel="noopener">Hashicorp Packer Simplified | Build Automated AWS AMI #cloud #aws #devops</a></td>
+      <td class="td-dur">57m</td>
+      <td class="td-covers">HashiCorp Packer deep-dive · HCL2 template syntax · AWS EBS builder · Shell and Ansible provisioners · AMI tagging strategy · Automated AMI pipeline in Jenkins · AMI sharing across accounts</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#007800">Project 3 — Multi-Region, Multi-Account SaaS on AWS
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Project 3 PDFs</a>
+  </div>
+    <span class="section-hours">11.4h</span>
+    <div class="section-note">5 parts + AWS Control Tower extra · Enterprise SaaS with AWS Organizations, Control Tower, Transit Gateway.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#007800">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="setup a multi-region, multi-account saas company from scratch on aws cloud - part 1 aws organizations setup · ou structure design · control tower landing zone deployment · service control policies (scps) · account structure planning">
+      <td class="td-num">99</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=QJ2ibyR6kLg" target="_blank" rel="noopener">Setup a Multi-Region, Multi-Account SaaS Company from Scratch on AWS Cloud - Part 1</a></td>
+      <td class="td-dur">3h 02m</td>
+      <td class="td-covers">AWS Organizations setup · OU structure design · Control Tower landing zone deployment · Service Control Policies (SCPs) · Account structure planning</td>
+    </tr>
+    <tr class="odd" data-search="aws control tower setup - session # 1 (extra) aws control tower · landing zone setup walkthrough · ou structure · enrolment of existing accounts · account factory for terraform (aft) · guardrail management">
+      <td class="td-num">100</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=e_AIUg2B-ac" target="_blank" rel="noopener">AWS Control Tower Setup - Session # 1 (EXTRA)</a></td>
+      <td class="td-dur">8m</td>
+      <td class="td-covers">AWS Control Tower · Landing zone setup walkthrough · OU structure · Enrolment of existing accounts · Account Factory for Terraform (AFT) · Guardrail management</td>
+    </tr>
+    <tr class="even" data-search="setup a multi-region, multi-account saas company from scratch on aws cloud - part 2 account factory · automated account vending · account factory for terraform (aft) · baseline guardrails · email/alias configuration">
+      <td class="td-num">101</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=J7zBKbnuMIQ" target="_blank" rel="noopener">Setup a Multi-Region, Multi-Account SaaS Company from Scratch on AWS Cloud - Part 2</a></td>
+      <td class="td-dur">2h 37m</td>
+      <td class="td-covers">Account Factory · Automated account vending · Account Factory for Terraform (AFT) · Baseline guardrails · Email/alias configuration</td>
+    </tr>
+    <tr class="odd" data-search="setup a multi-region, multi-account saas company from scratch on aws cloud - part 3 multi-account networking · transit gateway hub-and-spoke design · route table propagation · cross-account vpc connectivity · dns resolution">
+      <td class="td-num">102</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Cx0w_JK3Sx4" target="_blank" rel="noopener">Setup a Multi-Region, Multi-Account SaaS Company from Scratch on AWS Cloud - Part 3</a></td>
+      <td class="td-dur">2h 25m</td>
+      <td class="td-covers">Multi-account networking · Transit Gateway hub-and-spoke design · Route table propagation · Cross-account VPC connectivity · DNS resolution</td>
+    </tr>
+    <tr class="even" data-search="setup a multi-region, multi-account saas company from scratch on aws cloud - part 4 cross-account iam · trust relationships · role assumption · sts credentials · cross-account s3 access · resource-based policies">
+      <td class="td-num">103</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=rtj8PNGTnwY" target="_blank" rel="noopener">Setup a Multi-Region, Multi-Account SaaS Company from Scratch on AWS Cloud - Part 4</a></td>
+      <td class="td-dur">1h 37m</td>
+      <td class="td-covers">Cross-account IAM · Trust relationships · Role assumption · STS credentials · Cross-account S3 access · Resource-based policies</td>
+    </tr>
+    <tr class="odd" data-search="setup a multi-region, multi-account saas company from scratch on aws cloud - part 5 multi-region failover · route 53 health checks · failover routing · aws backup cross-region · rds cross-region read replicas · dr testing">
+      <td class="td-num">104</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=TQaqwW-mdVE" target="_blank" rel="noopener">Setup a Multi-Region, Multi-Account SaaS Company from Scratch on AWS Cloud - Part 5</a></td>
+      <td class="td-dur">1h 31m</td>
+      <td class="td-covers">Multi-region failover · Route 53 health checks · Failover routing · AWS Backup cross-region · RDS cross-region read replicas · DR testing</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#007800">Project 4 — Enterprise Azure Deployment
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Project 4 PDFs</a>
+  </div>
+    <span class="section-hours">4.9h</span>
+    <div class="section-note">3 sessions · AKS, ACR, Azure DevOps pipelines, monitoring.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#007800">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="project # 4 | session #  1 azure project architecture · resource group design · vnet planning · aks cluster provisioning with terraform · azure container registry setup">
+      <td class="td-num">105</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=jHUu4RqKgTg" target="_blank" rel="noopener">Project # 4 | Session #  1</a></td>
+      <td class="td-dur">1h 41m</td>
+      <td class="td-covers">Azure project architecture · Resource group design · VNet planning · AKS cluster provisioning with Terraform · Azure Container Registry setup</td>
+    </tr>
+    <tr class="odd" data-search="project # 4 | session # 2 azure devops pipeline · yaml pipeline authoring · acr image push · helm-based aks deployment · environment approvals · rollback">
+      <td class="td-num">106</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=1aO4MXNBKxo" target="_blank" rel="noopener">Project # 4 | Session # 2</a></td>
+      <td class="td-dur">1h 40m</td>
+      <td class="td-covers">Azure DevOps pipeline · YAML pipeline authoring · ACR image push · Helm-based AKS deployment · Environment approvals · Rollback</td>
+    </tr>
+    <tr class="even" data-search="project # 4 | session # 3 azure monitoring and security · azure monitor metrics/alerts · key vault integration with aks (csi driver) · network policies · final testing">
+      <td class="td-num">107</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=fEl6BIa6pg0" target="_blank" rel="noopener">Project # 4 | Session # 3</a></td>
+      <td class="td-dur">1h 32m</td>
+      <td class="td-covers">Azure monitoring and security · Azure Monitor metrics/alerts · Key Vault integration with AKS (CSI driver) · Network policies · Final testing</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#007800">Project 5 — Enterprise DevOps Programme (Batch #4) — 20 Sessions
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Project 5 PDFs</a>
+  </div>
+    <span class="section-hours">26.7h</span>
+    <div class="section-note">20 sessions · The most comprehensive programme covering every aspect of enterprise DevOps.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#007800">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session # 1 programme kickoff · enterprise architecture overview · tool stack selection · environment setup · git repository structure · project scope">
+      <td class="td-num">108</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=J-lR8HB0aDI" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 1</a></td>
+      <td class="td-dur">2h 35m</td>
+      <td class="td-covers">Programme kickoff · Enterprise architecture overview · Tool stack selection · Environment setup · Git repository structure · Project scope</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 2 infrastructure foundation · terraform modules for vpc/subnets/security groups · iam baseline · s3 for terraform state · dynamodb for state locking">
+      <td class="td-num">109</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=BsnSEby50HQ" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 2</a></td>
+      <td class="td-dur">41m</td>
+      <td class="td-covers">Infrastructure foundation · Terraform modules for VPC/subnets/security groups · IAM baseline · S3 for Terraform state · DynamoDB for state locking</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session # 3 compute infrastructure · ec2 auto scaling groups · launch templates · alb with https · acm certificates · route 53 dns · waf setup">
+      <td class="td-num">110</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=9K3fKvqGtQo" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 3</a></td>
+      <td class="td-dur">2h 22m</td>
+      <td class="td-covers">Compute infrastructure · EC2 Auto Scaling Groups · Launch Templates · ALB with HTTPS · ACM certificates · Route 53 DNS · WAF setup</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 4 container platform · eks cluster (terraform) · managed node groups · cluster add-ons · irsa (iam roles for service accounts) · cluster autoscaler">
+      <td class="td-num">111</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=CyGfBHJLaxs" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 4</a></td>
+      <td class="td-dur">1h 56m</td>
+      <td class="td-covers">Container platform · EKS cluster (Terraform) · Managed node groups · Cluster add-ons · IRSA (IAM Roles for Service Accounts) · Cluster autoscaler</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session # 5 ci pipeline · jenkins/github actions · dockerfile · multi-stage builds · sonarqube quality gate · trivy container scanning · ecr push">
+      <td class="td-num">112</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=J6nl91bwYRE" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 5</a></td>
+      <td class="td-dur">10m</td>
+      <td class="td-covers">CI pipeline · Jenkins/GitHub Actions · Dockerfile · Multi-stage builds · SonarQube quality gate · Trivy container scanning · ECR push</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 6 cd pipeline · argocd gitops · helm charts · environment promotion (dev → staging → prod) · approval gates · rollback">
+      <td class="td-num">113</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Ri9-FyhyT-U" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 6</a></td>
+      <td class="td-dur">2h 25m</td>
+      <td class="td-covers">CD pipeline · ArgoCD GitOps · Helm charts · Environment promotion (dev → staging → prod) · Approval gates · Rollback</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session # 7 databases · rds aurora mysql multi-az · parameter store for credentials · elasticache redis for sessions · dynamodb for metadata">
+      <td class="td-num">114</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=N50NBo5Tckg" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 7</a></td>
+      <td class="td-dur">43m</td>
+      <td class="td-covers">Databases · RDS Aurora MySQL Multi-AZ · Parameter Store for credentials · ElastiCache Redis for sessions · DynamoDB for metadata</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 8 observability stack · prometheus + grafana (helm) · cloudwatch integration · custom dashboards · alertmanager with slack/pagerduty">
+      <td class="td-num">115</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=VIGmzs7mKjA" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 8</a></td>
+      <td class="td-dur">1h 48m</td>
+      <td class="td-covers">Observability stack · Prometheus + Grafana (Helm) · CloudWatch integration · Custom dashboards · Alertmanager with Slack/PagerDuty</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session # 9 security hardening · aws config rules · guardduty · security hub · macie for s3 · inspector for ec2 · compliance reporting">
+      <td class="td-num">116</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=p6fkSSKLtoY" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 9</a></td>
+      <td class="td-dur">32m</td>
+      <td class="td-covers">Security hardening · AWS Config rules · GuardDuty · Security Hub · Macie for S3 · Inspector for EC2 · Compliance reporting</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 10 cost optimisation · right-sizing · reserved instances vs spot · s3 lifecycle policies · cost explorer dashboards · budget alerts">
+      <td class="td-num">117</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=4yynRHJKivY" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 10</a></td>
+      <td class="td-dur">2h 18m</td>
+      <td class="td-covers">Cost optimisation · Right-sizing · Reserved Instances vs Spot · S3 lifecycle policies · Cost Explorer dashboards · Budget alerts</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session # 11 advanced kubernetes · hpa + keda (event-driven autoscaling) · vpa · pod disruption budgets · network policies · opa gatekeeper">
+      <td class="td-num">118</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=vP4MbSWqW7c" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 11</a></td>
+      <td class="td-dur">39m</td>
+      <td class="td-covers">Advanced Kubernetes · HPA + KEDA (event-driven autoscaling) · VPA · Pod Disruption Budgets · Network policies · OPA Gatekeeper</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 12 service mesh · istio/linkerd introduction · mtls between services · traffic management · canary deployments · service mesh observability">
+      <td class="td-num">119</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=9l9ZbwmgC9c" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 12</a></td>
+      <td class="td-dur">1h 58m</td>
+      <td class="td-covers">Service mesh · Istio/Linkerd introduction · mTLS between services · Traffic management · Canary deployments · Service mesh observability</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session #13 gitops advanced · applicationset controller · multi-cluster argocd · secret management (sealed secrets / external secrets operator)">
+      <td class="td-num">120</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=rbIEXjD24cg" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #13</a></td>
+      <td class="td-dur">1h 46m</td>
+      <td class="td-covers">GitOps advanced · ApplicationSet controller · Multi-cluster ArgoCD · Secret management (Sealed Secrets / External Secrets Operator)</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session # 14 disaster recovery · cross-region replication · velero kubernetes backup · rds cross-region · route 53 failover · dr runbook">
+      <td class="td-num">121</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=8XYVvFaivGA" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session # 14</a></td>
+      <td class="td-dur">18m</td>
+      <td class="td-covers">Disaster recovery · Cross-region replication · Velero Kubernetes backup · RDS cross-region · Route 53 failover · DR runbook</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session #15 performance testing · k6/locust load testing · performance benchmarks · database query optimisation · caching strategies">
+      <td class="td-num">122</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=r0PyIb2vjHo" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #15</a></td>
+      <td class="td-dur">1h 24m</td>
+      <td class="td-covers">Performance testing · k6/Locust load testing · Performance benchmarks · Database query optimisation · Caching strategies</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session #16 documentation and compliance · architecture diagrams · runbooks · slo/sla documentation · soc2 controls overview">
+      <td class="td-num">123</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=8PtiOsRbwVg" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #16</a></td>
+      <td class="td-dur">7m</td>
+      <td class="td-covers">Documentation and compliance · Architecture diagrams · Runbooks · SLO/SLA documentation · SOC2 controls overview</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session #17 multi-tenancy · namespace isolation · resource quotas · network policies per tenant · tenant onboarding automation">
+      <td class="td-num">124</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=iquaxtgexCw" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #17</a></td>
+      <td class="td-dur">1h 27m</td>
+      <td class="td-covers">Multi-tenancy · Namespace isolation · Resource quotas · Network policies per tenant · Tenant onboarding automation</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session #18 advanced ci/cd · matrix builds · parallel test execution · test coverage reports · automated security scanning pipeline">
+      <td class="td-num">125</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=b-870wd9hGU" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #18</a></td>
+      <td class="td-dur">38m</td>
+      <td class="td-covers">Advanced CI/CD · Matrix builds · Parallel test execution · Test coverage reports · Automated security scanning pipeline</td>
+    </tr>
+    <tr class="even" data-search="devops and cloud projects batch #4 - session #19 platform engineering · internal developer platform (idp) concepts · backstage introduction · golden paths · self-service templates">
+      <td class="td-num">126</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=gRr-pGBhi6U" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #19</a></td>
+      <td class="td-dur">1h 44m</td>
+      <td class="td-covers">Platform engineering · Internal Developer Platform (IDP) concepts · Backstage introduction · Golden paths · Self-service templates</td>
+    </tr>
+    <tr class="odd" data-search="devops and cloud projects batch #4 - session #20 programme completion · final project demo · architecture review · lessons learned · career path advice · next steps">
+      <td class="td-num">127</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=G1rIz1rsYN8" target="_blank" rel="noopener">DevOps and Cloud Projects Batch #4 - Session #20</a></td>
+      <td class="td-dur">1h 01m</td>
+      <td class="td-covers">Programme completion · Final project demo · Architecture review · Lessons learned · Career path advice · Next steps</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage6">
+<div class="stage-header" style="background:#005aa0">
+  <div class="stage-icon">🤖</div>
+  <div>
+    <div class="stage-label">STAGE 6</div>
+    <div class="stage-title">AI for DevOps & Cloud</div>
+  </div>
+  <div class="stage-meta">
+    <strong>6 sessions</strong>
+    12.8h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#005aa0">
+  Learn how to integrate Artificial Intelligence and Large Language Models (LLMs) into DevOps and Cloud workflows. Covers AI/ML fundamentals, OpenAI/AWS Bedrock/Azure OpenAI, LangChain, AI-powered code review, AIOps and responsible AI in production.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#005aa0">AI Bootcamp #1 (6 Sessions)
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 AI for DevOps PDFs</a>
+  </div>
+    <span class="section-hours">12.8h</span>
+    <div class="section-note">6 sessions · AI/ML fundamentals through practical AI integration in DevOps pipelines.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#005aa0">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="ai bootcamp # 1 - session # 1 covers: ai bootcamp # 1 - session # 1">
+      <td class="td-num">128</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=CepLjvpiO-8" target="_blank" rel="noopener">AI Bootcamp # 1 - Session # 1</a></td>
+      <td class="td-dur">2h 15m</td>
+      <td class="td-covers">Covers: AI Bootcamp # 1 - Session # 1</td>
+    </tr>
+    <tr class="odd" data-search="ai bootcamp # 1 - session # 2 covers: ai bootcamp # 1 - session # 2">
+      <td class="td-num">129</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=FFCxEx1hEdQ" target="_blank" rel="noopener">AI Bootcamp # 1 - Session # 2</a></td>
+      <td class="td-dur">2h 32m</td>
+      <td class="td-covers">Covers: AI Bootcamp # 1 - Session # 2</td>
+    </tr>
+    <tr class="even" data-search="ai bootcamp # 1 - session # 3 covers: ai bootcamp # 1 - session # 3">
+      <td class="td-num">130</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=ieGQAemJUeQ" target="_blank" rel="noopener">AI Bootcamp # 1 - Session # 3</a></td>
+      <td class="td-dur">1h 59m</td>
+      <td class="td-covers">Covers: AI Bootcamp # 1 - Session # 3</td>
+    </tr>
+    <tr class="odd" data-search="ai bootcamp # 1 - session # 4 covers: ai bootcamp # 1 - session # 4">
+      <td class="td-num">131</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=GBjnpzWmezI" target="_blank" rel="noopener">AI Bootcamp # 1 - Session # 4</a></td>
+      <td class="td-dur">2h 00m</td>
+      <td class="td-covers">Covers: AI Bootcamp # 1 - Session # 4</td>
+    </tr>
+    <tr class="even" data-search="ai bootcamp # 1 - session # 5 covers: ai bootcamp # 1 - session # 5">
+      <td class="td-num">132</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=a_uLO6XY_bY" target="_blank" rel="noopener">AI Bootcamp # 1 - Session # 5</a></td>
+      <td class="td-dur">55m</td>
+      <td class="td-covers">Covers: AI Bootcamp # 1 - Session # 5</td>
+    </tr>
+    <tr class="odd" data-search="bootcamp # 1 - session # 6 core concepts and hands-on lab">
+      <td class="td-num">133</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=Xt_phkfpdqs" target="_blank" rel="noopener">Bootcamp # 1 - Session # 6</a></td>
+      <td class="td-dur">3h 03m</td>
+      <td class="td-covers">Core concepts and hands-on lab</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+<div class="stage" id="stage7">
+<div class="stage-header" style="background:#785000">
+  <div class="stage-icon">🎯</div>
+  <div>
+    <div class="stage-label">STAGE 7</div>
+    <div class="stage-title">Career Preparation — Get Hired</div>
+  </div>
+  <div class="stage-meta">
+    <strong>9 sessions</strong>
+    16.8h of content
+  </div>
+</div>
+<div class="stage-description" style="border-left-color:#785000">
+  Prepare for DevOps and Cloud job interviews and professional career development. Industry mentors cover career strategy, AWS architecture, DevSecOps and CV writing. Review these in parallel with Stage 5 projects to maximise readiness.
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#785000">Mentorship Sessions
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Career PDFs</a>
+  </div>
+    <span class="section-hours">9.6h</span>
+    <div class="section-note">5 sessions · Career advice, AWS Well-Architected, DevSecOps, WAF, and CV masterclass from industry mentors.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#785000">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="mentorship session | 11dec2023 | introductions | interviews &amp; job analysis career guidance · devops market outlook · interview tips · technical vs behavioural questions · cv review · linkedin profile optimisation · networking strategies · salary expectations">
+      <td class="td-num">134</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=INUrIbL5k3Q" target="_blank" rel="noopener">Mentorship Session | 11Dec2023 | Introductions | Interviews &amp; Job Analysis</a></td>
+      <td class="td-dur">1h 55m</td>
+      <td class="td-covers">Career guidance · DevOps market outlook · Interview tips · Technical vs behavioural questions · CV review · LinkedIn profile optimisation · Networking strategies · Salary expectations</td>
+    </tr>
+    <tr class="odd" data-search="mentorship session | 18dec2023 | aws well architected framework aws well-architected framework · operational excellence · security · reliability · performance efficiency · cost optimisation · sustainability pillars · architecture review process">
+      <td class="td-num">135</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=doVG30Cpwp0" target="_blank" rel="noopener">Mentorship Session | 18Dec2023 | AWS Well Architected Framework</a></td>
+      <td class="td-dur">2h 08m</td>
+      <td class="td-covers">AWS Well-Architected Framework · Operational Excellence · Security · Reliability · Performance Efficiency · Cost Optimisation · Sustainability pillars · Architecture review process</td>
+    </tr>
+    <tr class="even" data-search="mentorship session | 24dec2023 | devsecops devsecops practices · security-as-code · sast/dast tools · container security scanning · secrets management · compliance as code · threat modelling basics">
+      <td class="td-num">136</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=J2_ZDKOpZkE" target="_blank" rel="noopener">Mentorship Session | 24Dec2023 | DevSecOps</a></td>
+      <td class="td-dur">2h 35m</td>
+      <td class="td-covers">DevSecOps practices · Security-as-code · SAST/DAST tools · Container security scanning · Secrets management · Compliance as code · Threat modelling basics</td>
+    </tr>
+    <tr class="odd" data-search="mentorship session | 7 jan 2023 | waf aws waf · web acls · rule groups (managed/custom) · rate-based rules · bot control · geo-restriction · waf logging · integration with alb/cloudfront/api gateway">
+      <td class="td-num">137</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=gGiN3fsEKMA" target="_blank" rel="noopener">Mentorship Session | 7 Jan 2023 | WAF</a></td>
+      <td class="td-dur">2h 21m</td>
+      <td class="td-covers">AWS WAF · Web ACLs · Rule groups (managed/custom) · Rate-based rules · Bot control · Geo-restriction · WAF logging · Integration with ALB/CloudFront/API Gateway</td>
+    </tr>
+    <tr class="even" data-search="mentorship session | how to make a great cv that works cv/resume masterclass · ats optimisation · skills section structure · project descriptions using star/soar method · portfolio presentation · github and linkedin tips">
+      <td class="td-num">138</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=oq95snW4s9U" target="_blank" rel="noopener">Mentorship Session | How to make a great CV that works</a></td>
+      <td class="td-dur">34m</td>
+      <td class="td-covers">CV/resume masterclass · ATS optimisation · Skills section structure · Project descriptions using STAR/SOAR method · Portfolio presentation · GitHub and LinkedIn tips</td>
+    </tr>
+  </tbody></table></div></div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title" style="color:#785000">Interview Preparation — April 2026
+    <a class="pdf-link" href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank" rel="noopener">📄 Interview Prep PDFs</a>
+  </div>
+    <span class="section-hours">7.2h</span>
+    <div class="section-note">4 sessions · Targeted technical and behavioural interview preparation for DevOps and Cloud engineering roles.</div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+  <thead>
+    <tr style="background:#785000">
+      <th>#</th>
+      <th>Video Title</th>
+      <th class="th-dur">Duration</th>
+      <th>What Is Covered in This Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="even" data-search="devops &amp; cloud interview preparation program session #1 interview fundamentals · devops concepts review · common linux/git/docker questions · scenario-based questions · star method · interview mindset">
+      <td class="td-num">139</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=EggemK4_bwI" target="_blank" rel="noopener">DevOps &amp; Cloud Interview Preparation Program Session #1</a></td>
+      <td class="td-dur">2h 18m</td>
+      <td class="td-covers">Interview fundamentals · DevOps concepts review · Common Linux/Git/Docker questions · Scenario-based questions · STAR method · Interview mindset</td>
+    </tr>
+    <tr class="odd" data-search="devops &amp; cloud interview preparation program session #2 aws interview questions · networking (vpc/subnets/sgs) · compute (ec2/eks/ecs) · storage (s3/ebs/efs) · iam deep-dive · architecture questions">
+      <td class="td-num">140</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=EBTPiNjE3-g" target="_blank" rel="noopener">DevOps &amp; Cloud Interview Preparation Program Session #2</a></td>
+      <td class="td-dur">54m</td>
+      <td class="td-covers">AWS interview questions · Networking (VPC/subnets/SGs) · Compute (EC2/EKS/ECS) · Storage (S3/EBS/EFS) · IAM deep-dive · Architecture questions</td>
+    </tr>
+    <tr class="even" data-search="devops &amp; cloud interview preparation program session #3 kubernetes and terraform interview questions · k8s architecture · troubleshooting scenarios · terraform state management · module design best practices">
+      <td class="td-num">141</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=uhaw3eeiE-A" target="_blank" rel="noopener">DevOps &amp; Cloud Interview Preparation Program Session #3</a></td>
+      <td class="td-dur">1h 50m</td>
+      <td class="td-covers">Kubernetes and Terraform interview questions · K8s architecture · Troubleshooting scenarios · Terraform state management · Module design best practices</td>
+    </tr>
+    <tr class="odd" data-search="devops &amp; cloud interview preparation program session #4 mock interviews · whiteboard architecture challenges · live q&amp;a · salary negotiation · final tips for getting hired · job search strategy">
+      <td class="td-num">142</td>
+      <td class="td-title"><a href="https://www.youtube.com/watch?v=8oq72RRsd4o" target="_blank" rel="noopener">DevOps &amp; Cloud Interview Preparation Program Session #4</a></td>
+      <td class="td-dur">2h 10m</td>
+      <td class="td-covers">Mock interviews · Whiteboard architecture challenges · Live Q&amp;A · Salary negotiation · Final tips for getting hired · Job search strategy</td>
+    </tr>
+  </tbody></table></div></div>
+</div>
+</main>
+
+<footer>
+  <p>DevOps &amp; Cloud Labs · Complete Learning Roadmap · Generated 18 May 2026</p>
+  <p style="margin-top:6px;">
+    <a href="https://www.linkedin.com/company/devops-and-cloud-labs" target="_blank">LinkedIn</a> ·
+    <a href="https://www.youtube.com/@DevOps-Cloud" target="_blank">YouTube</a> ·
+    <a href="https://t.me/+xjZA3ZS-OQkxZTk1" target="_blank">Telegram</a>
+  </p>
+</footer>
+
+
+<script>
+(function(){
+  const input = document.getElementById('search');
+  const counter = document.getElementById('result-count');
+  const rows = Array.from(document.querySelectorAll('tbody tr'));
+
+  function update(){
+    const q = input.value.trim().toLowerCase();
+    let visible = 0;
+    rows.forEach(row => {
+      if(!q || row.dataset.search.includes(q)){
+        row.classList.remove('hidden-by-search');
+        visible++;
+      } else {
+        row.classList.add('hidden-by-search');
+      }
+    });
+    if(q){
+      counter.textContent = visible + ' session' + (visible !== 1 ? 's' : '') + ' matched';
+    } else {
+      counter.textContent = '';
+    }
+    // Show/hide section tables gracefully
+    document.querySelectorAll('.section').forEach(sec => {
+      const vis = sec.querySelectorAll('tbody tr:not(.hidden-by-search)').length;
+      sec.style.display = vis === 0 && q ? 'none' : '';
+    });
+    document.querySelectorAll('.stage').forEach(stage => {
+      const vis = stage.querySelectorAll('.section:not([style*="none"])').length;
+      stage.style.display = vis === 0 && q ? 'none' : '';
+    });
+  }
+
+  input.addEventListener('input', update);
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav.stage-nav a').forEach(a => {
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      const target = document.getElementById(this.getAttribute('href').slice(1));
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
